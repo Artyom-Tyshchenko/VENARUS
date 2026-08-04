@@ -60,13 +60,13 @@ html, body {
 /* ---------- Плавающий бургер при прокрутке ---------- */
 .hamburger--sticky {
     position: fixed !important;
-    top: 24px;
-    right: 24px;
+    top: 32px;
+    right: max(24px, calc((100vw - 1440px) / 2 + 151px));
     width: 44px;
-    padding: 10px;
-    background: #E5E5E5;
-    border-radius: 50%;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
     z-index: 500;
     opacity: 0;
     visibility: hidden;
@@ -84,6 +84,11 @@ html, body {
 }
 .hamburger--sticky span:last-child {
     margin-bottom: 0;
+}
+.hamburger--sticky-wave {
+    display: block;
+    color: #E8578F;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
 }
 .hamburger--sticky.hamburger_active span:nth-child(1) {
     display: none;
