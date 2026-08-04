@@ -8,11 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/custom.css">
     <script src="https://kit.fontawesome.com/d50d610183.js" crossorigin="anonymous"></script>
-    <title>Единицы измерения</title>
+    <title>ВЕНАРУС — надёжный помощник в лечении варикоза</title>
 </head>
 
 <body>
+    <div id="scaleOuter">
+    <div id="scaleWrapper">
     <!-- Первая секция -->
     <section class="main-section">
         <div class="menu">
@@ -20,12 +23,12 @@
                 <header class="main-section__header">
                     <a href="#"><img class="main-section__logo" src="src/img/ВЕНАРУС.png" alt=""></a>
                 </header>
-                <p class="menu__text-one">Где купить</p>
-                <p class="menu__text-second">О препарате</p>
-                <p class="menu__text-thrid">О варикозе</p>
-                <p class="menu__text-fourth">Решение</p>
-                <p class="menu__text-fifth">Специалистам</p>
-                <p class="menu__text-sixth">Гемморой</p>
+                <p class="menu__text-one"><a href="#" data-menu-link="map" data-modal="map">Где купить</a></p>
+                <p class="menu__text-second"><a href="#about-drug" data-menu-link="anchor">О препарате</a></p>
+                <p class="menu__text-thrid"><a href="#about-varicose" data-menu-link="anchor">О варикозе</a></p>
+                <p class="menu__text-fourth"><a href="#reshenie" data-menu-link="anchor">Решение</a></p>
+                <p class="menu__text-fifth"><a href="#specialists-info" data-menu-link="anchor">Специалистам</a></p>
+                <p class="menu__text-sixth"><a href="#hemorrhoid" data-menu-link="anchor">Гемморой</a></p>
                 <img class="menu__line-one" src="src/svg/LINE 1.svg" alt="">
                 <img class="menu__line-second" src="src/svg/LINE 2.svg" alt="">
                 <img class="menu__line-thrid" src="src/svg/LINE 3.svg" alt="">
@@ -52,9 +55,15 @@
 
             </div>
             <div class="main-section__venarus">
-                <img class="main-section__venarus-one" src="src/img/Венарус 1.png" alt="">
-                <img class="main-section__venarus-second" src="src/img/Венарус 2.png" alt="">
-                <img class="main-section__venarus-thrid" src="src/img/Венарус 3.png" alt="">
+                <div class="dosage-slide dosage-slide--active" data-slide="0">
+                    <img class="main-section__venarus-one" src="src/img/Венарус 1.png" alt="Венарус 100 мг + 900 мг">
+                    <img class="main-section__venarus-second" src="src/img/Венарус 2.png" alt="Венарус 100 мг + 900 мг">
+                    <img class="main-section__venarus-thrid" src="src/img/Венарус 3.png" alt="Венарус 50 мг + 450 мг">
+                </div>
+                <div class="dosage-slide" data-slide="1">
+                    <img class="main-section__venarus-one" src="src/img/венарус 4-1.png" alt="Венарус 100 мг + 900 мг">
+                    <img class="main-section__venarus-second" src="src/img/Венарус 4-2.png" alt="Венарус 50 мг + 450 мг">
+                </div>
             </div>
             <div class="main-section__logo">
                 <img class="main-section__logo-one" src="src/img/кнопка 1.png" alt="">
@@ -63,15 +72,15 @@
             </div>
             <div class="main-section__text">
                 <ul class="main-section__list">
-                    <li class="main-section__list-item-one"><a href="#about-me">Схема приёма</a> </li>
-                    <li class="main-section__list-item-second"><a href="#lessons">Инструкция</a> </li>
-                    <li class="main-section__list-item-thrid"><a href="#">Где купить</a> </li>
+                    <li class="main-section__list-item-one"><a href="#" data-modal="scheme">Схема приёма</a> </li>
+                    <li class="main-section__list-item-second"><a href="#" data-modal="instruction">Инструкция</a> </li>
+                    <li class="main-section__list-item-thrid"><a href="#" data-modal="map">Где купить</a> </li>
                 </ul>
             </div>
             <div class="main-section__switch">
                 <a href=""><img class="main-section__switch-right" src="src/img/Правая стрелочка.png" alt=""></a>
                 <a href=""><img class="main-section__switch-left" src="src/img/Левая стрелочка.png" alt=""></a>
-                <div class="main-section__button">
+                <div class="main-section__button" data-modal="map">
                     <p class="main-section__button-text">Где купить ></p>
                 </div>
             </div>
@@ -84,8 +93,61 @@
             </div>
         </div>
     </section>
+    <!-- Новая секция: О препарате -->
+    <section class="extra-section" id="about-drug">
+        <div class="extra-section__inner">
+            <h2 class="extra-section__title">О препарате Венарус</h2>
+            <p class="extra-section__text">
+                Венарус — комбинированный венотонизирующий и венопротекторный препарат на основе диосмина и гесперидина.
+                Он способствует снижению растяжимости вен, повышению их тонуса, уменьшению застойных явлений и
+                снижению проницаемости капилляров. Выпускается в двух дозировках — 1000&nbsp;мг (по 1 таблетке в сутки)
+                и 500&nbsp;мг (по 2 таблетки в сутки), что позволяет подобрать удобную схему приёма.
+            </p>
+            <p class="extra-section__text" style="margin-top:16px;">
+                Производится в соответствии со стандартами GMP. Перед началом применения рекомендуется
+                проконсультироваться с врачом — подробную схему приёма и инструкцию можно посмотреть по ссылкам в шапке сайта.
+            </p>
+        </div>
+    </section>
+
+    <!-- Новая секция: О варикозе -->
+    <section class="extra-section extra-section--dark" id="about-varicose">
+        <div class="extra-section__inner">
+            <h2 class="extra-section__title">О варикозе</h2>
+            <p class="extra-section__text">
+                Варикозное расширение вен — это хроническое заболевание, связанное с нарушением работы венозных
+                клапанов и застоем крови в нижних конечностях. Стенки вен теряют эластичность, вены расширяются
+                и становятся более заметными под кожей.
+            </p>
+            <div class="extra-section__grid">
+                <div class="extra-section__card">
+                    <h4>Частые симптомы</h4>
+                    <ul>
+                        <li>Тяжесть и усталость в ногах к вечеру</li>
+                        <li>Отёчность голеней и стоп</li>
+                        <li>Ночные судороги</li>
+                        <li>Сосудистые звёздочки, выступающие вены</li>
+                    </ul>
+                </div>
+                <div class="extra-section__card">
+                    <h4>Факторы риска</h4>
+                    <ul>
+                        <li>Наследственная предрасположенность</li>
+                        <li>Длительное стояние или сидение на работе</li>
+                        <li>Беременность и гормональные изменения</li>
+                        <li>Избыточный вес и малоподвижный образ жизни</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="extra-section__disclaimer">
+                На ранних стадиях помогает консервативная терапия и коррекция образа жизни, на более выраженных —
+                необходима очная консультация флеболога. Материал носит ознакомительный характер.
+            </p>
+        </div>
+    </section>
+
     <!-- Вторая секция -->
-    <section class="second-section">
+    <section class="second-section" id="reshenie">
         <div class="container second-section__main-container">
             <div class="second-section__line">
                 <div class="second-section__line-one"></div>
@@ -145,35 +207,48 @@
             </div>
         </div>
     </section>
+    <!-- Дополнение к «Решение»: приём + рекомендации -->
+    <section class="extra-section" id="reshenie-extra">
+        <div class="extra-section__inner">
+            <h2 class="extra-section__title">Как принимать и что делать при варикозе</h2>
+            <div class="extra-section__grid">
+                <div class="extra-section__card">
+                    <h4>Приём препарата</h4>
+                    <ul>
+                        <li>1000 мг — 1 таблетка в сутки, желательно утром, во время еды</li>
+                        <li>500 мг — 2 таблетки в сутки (за один или два приёма), во время еды</li>
+                        <li>Точную длительность курса определяет врач</li>
+                    </ul>
+                </div>
+                <div class="extra-section__card">
+                    <h4>Рекомендации при варикозе</h4>
+                    <ul>
+                        <li>Больше двигайтесь, избегайте долгого стояния и сидения</li>
+                        <li>Держите ноги приподнятыми во время отдыха</li>
+                        <li>Носите компрессионный трикотаж, если он назначен врачом</li>
+                        <li>Следите за весом и питьевым режимом</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="extra-section__disclaimer">
+                Это общие рекомендации по образу жизни, а не медицинское назначение. Индивидуальную схему лечения
+                подбирает врач.
+            </p>
+        </div>
+    </section>
+
     <!-- Третья секция -->
-    <section class="thrid-section">
+    <section class="thrid-section" id="specialists-info">
         <div class="container thrid-section__content">
             <h5 class="thrid-section__opinion">О производстве <br> Венарус</h5>
             <img class="thrid-section__gradient" src="src/svg/Градиент.svg" alt="">
 
             <div class="thrid-section__nav">
-                <div id="carouselExampleControls" data-bs-interval="10000000" class="carousel slide"
-                    data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="src/img/links_zavod_1.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="src/img/links_zavod_2.png" class="d-block w-100" alt="...">
-                        </div>
-                    </div>
-
+                <div class="production-video">
+                    <iframe src="https://www.youtube.com/embed/HC720CxLNRo" title="О производстве"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen loading="lazy"></iframe>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="prev">
-                    <img src="src/svg/стрелка влево.svg" alt="">
-                    <span class="visually-hidden">Предыдущий</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                    data-bs-slide="next">
-                    <img src="src/svg/стрелка вправо.svg" alt="">
-                    <span class="visually-hidden">Следующий</span>
-                </button>
             </div>
 
 
@@ -193,8 +268,7 @@
 
             <!-- <img class="thrid-section__zavod-one" src="src/img/links_zavod_1.png" alt="">
             <img class="thrid-section__zavod-second" src="src/img/links_zavod_2.png" alt=""> -->
-            <div class="thrid-section__button"><a href=""><img src="src/svg/кнопка.svg" alt=""></a></div>
-            <div class="thrid-section__play"><a href=""><img src="src/svg/Проигрыватель.svg" alt=""></a></div>
+            <div class="thrid-section__button"><a href="https://venarus.ru/" target="_blank" rel="noopener"><img src="src/svg/кнопка.svg" alt="Подробнее"></a></div>
             <h6 class="thrid-section__title">Мнение <br> специалистов</h6>
             <p class="thrid-section__text">Фармакотерапия — <br> неотъемлемый компонент <br> современного лечения <br>
                 хронического заболевания вен.</p>
@@ -234,38 +308,124 @@
             <!-- <a href=""><img class="thrid-section__button-second" src="src/svg/кнопочка первая.svg" alt=""></a>
             <a href=""><img class="thrid-section__button-thrid" src="src/svg/кнопка 2.svg" alt=""></a> -->
             <!-- <a href=""><img class="thrid-section__button-fourth" src="src/svg/кнопка 3.svg" alt=""></a> -->
-            <a href=""><img class="thrid-section__button-play" src="src/svg/Проигрыватель.svg" alt="#"></a>
+            <a href="#specialist-videos"><img class="thrid-section__button-play" src="src/svg/Проигрыватель.svg" alt="#"></a>
+
+            <div id="specialist-videos" class="video-grid">
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/Zo5pF5AeUiQ" title="Мнение врача о венотониках"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/AUGs-dxMikc" title="Кто такой флеболог"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/BVWIZc1BYjs" title="Флеболог отвечает на вопросы о варикозе"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Дополнение к «Специалистам»: контакты и формула -->
+    <section class="extra-section extra-section--dark" id="specialists-extra">
+        <div class="extra-section__inner">
+            <h2 class="extra-section__title">Информация для специалистов</h2>
+            <p class="extra-section__text">
+                Действующие вещества и дозировка препарата Венарус:
+            </p>
+            <table class="formula-table">
+                <thead>
+                    <tr><th>Форма выпуска</th><th>Состав (на 1 таблетку)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1000 мг</td><td>Диосмин 900 мг + Гесперидин 100 мг</td></tr>
+                    <tr><td>500 мг</td><td>Диосмин 450 мг + Гесперидин 50 мг</td></tr>
+                </tbody>
+            </table>
+            <ul class="contacts-list">
+                <li><b>Медотдел:</b> specialists@venarus-demo.example</li>
+                <li><b>Телефон:</b> +7 (495) 123-45-67</li>
+                <li><b>Адрес:</b> г. Москва, ул. Шаболовка, д. 31, стр. 11</li>
+            </ul>
+            <p class="extra-section__disclaimer">
+                Контакты вымышленные и приведены исключительно в демонстрационных целях учебного pet-проекта.
+            </p>
+        </div>
+    </section>
+    <!-- Новая секция: Геморрой -->
+    <section class="extra-section" id="hemorrhoid">
+        <div class="extra-section__inner">
+            <h2 class="extra-section__title">Геморрой</h2>
+            <p class="extra-section__text">
+                Геморрой — это варикозное расширение вен геморроидального венозного сплетения. Проявляется
+                дискомфортом, зудом, а в некоторых случаях — кровоточивостью, особенно после длительного сидения,
+                натуживания или во время беременности.
+            </p>
+            <div class="extra-section__grid">
+                <div class="extra-section__card">
+                    <h4>Что помогает облегчить состояние</h4>
+                    <ul>
+                        <li>Питание с достаточным количеством клетчатки</li>
+                        <li>Питьевой режим и профилактика запоров</li>
+                        <li>Избегание длительного сидения и натуживания</li>
+                        <li>Умеренная физическая активность</li>
+                    </ul>
+                </div>
+                <div class="extra-section__card">
+                    <h4>Роль венотоников</h4>
+                    <ul>
+                        <li>Укрепляют сосудистую стенку</li>
+                        <li>Снижают застойные явления в венозном сплетении</li>
+                        <li>Применяются как часть комплексной терапии</li>
+                        <li>Назначаются врачом вместе с другими мерами</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="extra-section__disclaimer">
+                Материал носит ознакомительный характер и не является инструкцией к самолечению. При симптомах
+                геморроя рекомендуется консультация проктолога.
+            </p>
+        </div>
+    </section>
+
     <section class="fourth-section">
         <div class="container fourth-section__content">
             <img class="fourth-section__gradient-second" src="src/svg/Градиент 2.svg" alt="">
             <h6 class="fourth-section__title">Полезная <br> информация</h6>
             <p class="fourth-section__text">ВЕНАРУС — надежный помощник <br> в лечении варикоза, хранитель <br> женских
                 ног на пути <br> к её мечте!</p>
-            <img class="fourth-section__rectangle-one" src="src/svg/бананы.svg" alt="">
-            <img class="fourth-section__rectangle-second" src="src/svg/врач.svg" alt="">
-            <img class="fourth-section__rectangle-thrid" src="src/svg/брокколи.svg" alt="">
-            <img class="fourth-section__rectangle-fourth" src="src/svg/Rectangle 4.svg" alt="">
-            <a href=""><img class="fourth-section__button" src="src/svg/Подробнее.svg" alt=""></a>
-            <p class="fourth-section__title-second">Профилак- <br>тические <br> упражнения</p>
-            <p class="fourth-section__title-thrid">Диагностика <br> и способы <br> лечения</p>
-            <p class="fourth-section__title-fourth">Рекомен-<br>дации по <br> питанию </p>
-            <p class="fourth-section__title-fifth">Факты <br> о варикозе</p>
+            <a class="info-card" href="https://varikoz.ru/articles/effektivnye-uprazhneniya-pri-varikoze.html" target="_blank" rel="noopener">
+                <img class="fourth-section__rectangle-one" src="src/svg/бананы.svg" alt="">
+                <p class="fourth-section__title-second">Профилак- <br>тические <br> упражнения</p>
+            </a>
+            <a class="info-card" href="https://megapteka.ru/specials/chto-nelzya-delat-4755" target="_blank" rel="noopener">
+                <img class="fourth-section__rectangle-second" src="src/svg/врач.svg" alt="">
+                <p class="fourth-section__title-thrid">Диагностика <br> и способы <br> лечения</p>
+            </a>
+            <a class="info-card" href="https://veinaest.pro/blog/metodiki-lecheniya/profilaktika-varikoza/" target="_blank" rel="noopener">
+                <img class="fourth-section__rectangle-thrid" src="src/svg/брокколи.svg" alt="">
+                <p class="fourth-section__title-fourth">Рекомен-<br>дации по <br> питанию </p>
+            </a>
+            <a class="info-card" href="https://actual-phlebology.ru/afpatient/venotoniki-chego-ozhidat/" target="_blank" rel="noopener">
+                <img class="fourth-section__rectangle-fourth" src="src/svg/Rectangle 4.svg" alt="">
+                <p class="fourth-section__title-fifth">Факты <br> о варикозе</p>
+            </a>
+            <a href="https://megapteka.ru/specials/chto-nelzya-delat-4755" target="_blank" rel="noopener"><img class="fourth-section__button" src="src/svg/Подробнее.svg" alt="Подробнее"></a>
             <h6 class="fourth-section__title-sixth">Где <br> купить</h6>
-            <p class="fourth-section__text-second">Ветонизирующее средство <br> ВЕНАРУС вы можете приобрести в <br>
-                аптеках вашего города</p>
+            <p class="fourth-section__text-second">Венотонизирующее средство <br> ВЕНАРУС можно найти в аптеках <br>
+                вашего города или заказать <br> онлайн — выберите удобный сервис</p>
             <img class="fourth-section__venarus-one" src="src/img/венарус 4-1.png" alt="">
             <img class="fourth-section__venarus-second" src="src/img/Венарус 4-2.png" alt="">
-            <div class="fourth-section__buttons">
+            <a class="fourth-section__buttons" href="https://apteka.ru/" target="_blank" rel="noopener">
                 <p class="fourth-section__buttons-text-one">apteka.ru</p>
-            </div>
-            <div class="fourth-section__buttons-second">
+            </a>
+            <a class="fourth-section__buttons-second" href="https://366.ru/" target="_blank" rel="noopener">
                 <p class="fourth-section__buttons-text-second">366.ru</p>
-            </div>
-            <div class="fourth-section__buttons-thrid">
+            </a>
+            <a class="fourth-section__buttons-thrid" href="https://stolichki.ru/" target="_blank" rel="noopener">
                 <p class="fourth-section__buttons-text-thrid">stolichki.ru</p>
-            </div>
+            </a>
         </div>
     </section>
     <footer class="footer">
@@ -284,6 +444,17 @@
             <p class="footer__text-fourth">Создание сайтов <br> Фарм-студия №1 в Рунете</p>
         </div>
     </footer>
+    </div><!-- /#scaleWrapper -->
+    </div><!-- /#scaleOuter -->
+
+    <!-- Модальное окно (Схема приёма / Инструкция / Где купить) -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose" aria-label="Закрыть">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
     <script src="src/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
