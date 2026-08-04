@@ -2,21 +2,36 @@ window.addEventListener('DOMContentLoaded', () => {
 
     /* ===================== БУРГЕР-МЕНЮ ===================== */
     const menu = document.querySelector('.menu');
-    const hamburger = document.querySelector('.hamburger');
+    const hamburgers = document.querySelectorAll('.hamburger');
+    const stickyHamburger = document.getElementById('stickyHamburger');
     const menuLinks = document.querySelectorAll('.menu [data-menu-link]');
 
     function closeMenu() {
-        hamburger.classList.remove('hamburger_active');
+        hamburgers.forEach(h => h.classList.remove('hamburger_active'));
         menu.classList.remove('menu_active');
     }
 
     function toggleMenu() {
-        hamburger.classList.toggle('hamburger_active');
+        const isActive = menu.classList.contains('menu_active');
+        if (!isActive) {
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        }
+        hamburgers.forEach(h => h.classList.toggle('hamburger_active', !isActive));
         menu.classList.toggle('menu_active');
     }
 
-    if (hamburger && menu) {
-        hamburger.addEventListener('click', toggleMenu);
+    if (hamburgers.length && menu) {
+        hamburgers.forEach(h => h.addEventListener('click', toggleMenu));
+    }
+
+    // Плавающий бургер появляется, когда прокрутили мимо шапки
+    if (stickyHamburger) {
+        const SHOW_AFTER = 400;
+        function updateStickyHamburger() {
+            stickyHamburger.classList.toggle('hamburger--sticky-visible', window.scrollY > SHOW_AFTER);
+        }
+        updateStickyHamburger();
+        window.addEventListener('scroll', updateStickyHamburger, { passive: true });
     }
 
     menuLinks.forEach(item => {
@@ -79,8 +94,59 @@ window.addEventListener('DOMContentLoaded', () => {
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             `
+        },
+        search: {
+            title: 'Поиск по сайту',
+            html: `
+                <form class="modal-search" id="siteSearchForm">
+                    <input type="text" id="siteSearchInput" class="modal-search__input" placeholder="Например: судороги, геморрой, дозировка..." autocomplete="off">
+                    <button type="submit" class="modal-search__submit">Найти</button>
+                </form>
+                <div id="siteSearchResults" class="modal-search__results"></div>
+            `
         }
     };
+
+    // Индекс разделов сайта для простого клиентского поиска
+    const searchIndex = [
+        { id: 'about-drug', title: 'О препарате', keywords: 'венарус диосмин гесперидин состав дозировка 1000 500 мг таблетки' },
+        { id: 'about-varicose', title: 'О варикозе', keywords: 'варикоз вены тяжесть отёк отек судороги клапаны симптомы' },
+        { id: 'reshenie', title: 'Решение', keywords: 'приём прием схема дозировка рекомендации как принимать' },
+        { id: 'specialists-info', title: 'О производстве', keywords: 'производство завод специалистам формула контакты' },
+        { id: 'specialist-opinion', title: 'Мнение специалистов', keywords: 'врач флеболог мнение видео специалист' },
+        { id: 'hemorrhoid', title: 'Геморрой', keywords: 'геморрой проктолог венозное сплетение' },
+        { id: 'fourth-section', title: 'Где купить / Полезная информация', keywords: 'аптека купить apteka 366 stolichki профилактика упражнения питание диагностика' }
+    ];
+
+    function runSiteSearch(query) {
+        const resultsEl = document.getElementById('siteSearchResults');
+        if (!resultsEl) return;
+        const q = query.trim().toLowerCase();
+        if (!q) {
+            resultsEl.innerHTML = '';
+            return;
+        }
+        const matches = searchIndex.filter(item =>
+            item.title.toLowerCase().includes(q) || item.keywords.toLowerCase().includes(q)
+        );
+        if (!matches.length) {
+            resultsEl.innerHTML = '<p class="modal-note">Ничего не найдено. Попробуйте другой запрос.</p>';
+            return;
+        }
+        resultsEl.innerHTML = matches.map(m =>
+            `<a href="#${m.id}" class="modal-search__result" data-search-target="${m.id}">${m.title}</a>`
+        ).join('');
+        resultsEl.querySelectorAll('[data-search-target]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.getElementById(link.dataset.searchTarget);
+                closeModal();
+                if (target) {
+                    setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+                }
+            });
+        });
+    }
 
     function openModal(type) {
         const data = modalData[type];
@@ -88,6 +154,19 @@ window.addEventListener('DOMContentLoaded', () => {
         modalContent.innerHTML = `<h3 class="modal-title">${data.title}</h3>${data.html}`;
         modalOverlay.classList.add('modal-overlay--active');
         document.body.classList.add('no-scroll');
+
+        if (type === 'search') {
+            const form = document.getElementById('siteSearchForm');
+            const input = document.getElementById('siteSearchInput');
+            if (form && input) {
+                input.focus();
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    runSiteSearch(input.value);
+                });
+                input.addEventListener('input', () => runSiteSearch(input.value));
+            }
+        }
     }
 
     function closeModal() {

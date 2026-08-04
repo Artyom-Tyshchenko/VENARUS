@@ -57,6 +57,50 @@ html, body {
     overflow-y: auto;
 }
 
+/* ---------- Плавающий бургер при прокрутке ---------- */
+.hamburger--sticky {
+    position: fixed !important;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    padding: 10px;
+    background: #E5E5E5;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    z-index: 500;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity .3s ease, transform .3s ease, visibility .3s ease;
+    cursor: pointer;
+}
+.hamburger--sticky.hamburger--sticky-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.hamburger--sticky span {
+    margin-bottom: 6px;
+}
+.hamburger--sticky span:last-child {
+    margin-bottom: 0;
+}
+.hamburger--sticky.hamburger_active span:nth-child(1) {
+    display: none;
+}
+.hamburger--sticky.hamburger_active span:nth-child(3) {
+    display: none;
+}
+
+/* ---------- Фикс: декоративные линии перекрывали клики по пунктам меню ---------- */
+.menu__line-one,
+.menu__line-second,
+.menu__line-thrid,
+.menu__line-fourth,
+.menu__line-fifth {
+    pointer-events: none;
+}
+
 /* ---------- Ссылки внутри бургер-меню ---------- */
 .menu__text-one a,
 .menu__text-second a,
@@ -312,16 +356,45 @@ body.no-scroll {
     margin-top: 36px;
 }
 .video-card {
+    position: relative;
+    display: block;
     border-radius: 12px;
     overflow: hidden;
     background: #000;
     aspect-ratio: 16 / 9;
+    text-decoration: none;
 }
-.video-card iframe {
+.video-card img {
     width: 100%;
     height: 100%;
-    border: 0;
+    object-fit: cover;
     display: block;
+    transition: transform .3s ease, filter .3s ease;
+}
+.video-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.75);
+}
+.video-card__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #590D56;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    padding-left: 4px;
+    transition: transform .2s ease, background .2s ease;
+}
+.video-card:hover .video-card__play {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: #fff;
 }
 
 .thrid-section__navi-wrapper {
@@ -333,6 +406,7 @@ body.no-scroll {
     position: relative;
     width: 100%;
     height: 100%;
+    max-width: 100%;
     border-radius: 8px;
     overflow: hidden;
     background: #000;
@@ -342,6 +416,72 @@ body.no-scroll {
     height: 100%;
     border: 0;
     display: block;
+}
+
+/* Сокращаем пустое пространство внизу секции после переноса блока "Мнение специалистов" */
+.thrid-section {
+    min-height: 800px !important;
+}
+
+/* ---------- Поиск по сайту ---------- */
+.modal-search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+.modal-search__input {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+.modal-search__input:focus {
+    outline: none;
+    border-color: #590D56;
+}
+.modal-search__submit {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #590D56;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+.modal-search__submit:hover {
+    background: #47093E;
+}
+.modal-search__results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.modal-search__result {
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #f5f5f5;
+    color: #47093E;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background .2s ease;
+}
+.modal-search__result:hover {
+    background: #ece4eb;
+}
+
+/* ---------- Иконки лупы и метки в шапке — кликабельны ---------- */
+.main-section__lens,
+.main-section__favor {
+    cursor: pointer;
+    transition: opacity .2s ease, transform .2s ease;
+}
+.main-section__lens:hover,
+.main-section__favor:hover {
+    opacity: .7;
+    transform: scale(1.05);
 }
 
 /* ---------- Карточки "Полезная информация" — подъём при наведении ---------- */
