@@ -1,0 +1,19 @@
+{
+  "name": "venarus",
+  "version": "1.0.0",
+  "description": "Учебный pet-проект: лендинг фармацевтического препарата на HTML/CSS(SASS)/JS",
+  "private": true,
+  "scripts": {
+    "sass": "sass --watch src/sass/style.sass:src/css/style.css",
+    "sass:build": "sass src/sass/style.sass:src/css/style.css --style=compressed"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  },
+  "author": "Artyom Tyshchenko",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Artyom-Tyshchenko/venarus.git"
+  }
+}
