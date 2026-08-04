@@ -164,7 +164,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function updateScale() {
         if (!scaleInner || !scaleOuter) return;
         const viewportWidth = window.innerWidth;
-        const scale = Math.min(1, viewportWidth / BASE_WIDTH);
+        const scale = viewportWidth / BASE_WIDTH;
         scaleInner.style.transform = `scale(${scale})`;
         scaleOuter.style.height = (scaleInner.offsetHeight * scale) + 'px';
     }
