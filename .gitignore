@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Node / сборка (на будущее, если появится npm-тулинг)
+node_modules/
+npm-debug.log*
+dist/

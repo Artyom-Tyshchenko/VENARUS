@@ -1,0 +1,409 @@
+/* ==========================================================================
+   custom.css — дополнительные стили поверх style.css
+   Все новые фичи вынесены сюда, чтобы не трогать сгенерированный style.css
+   ========================================================================== */
+
+html, body {
+    overflow-x: hidden;
+}
+
+/* ---------- Обёртка адаптивного масштабирования ---------- */
+/* Макет изначально верстался под фиксированные 1440px. Чтобы на узких
+   экранах шапка с бургером и всё остальное не вылезали за пределы окна,
+   весь контент масштабируется целиком через JS (scale wrapper). */
+#scaleOuter {
+    width: 100%;
+    overflow: hidden;
+}
+#scaleWrapper {
+    width: 1440px;
+    transform-origin: top left;
+    will-change: transform;
+}
+
+/* ---------- Слайдер дозировок в шапке ---------- */
+.dosage-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity .5s ease;
+    pointer-events: none;
+}
+.dosage-slide--active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.main-section__switch-right,
+.main-section__switch-left {
+    cursor: pointer;
+    transition: transform .2s ease, opacity .2s ease;
+}
+.main-section__switch-right:hover,
+.main-section__switch-left:hover {
+    transform: scale(1.08);
+    opacity: .85;
+}
+
+/* ---------- Фикс бага позиционирования бургер-меню ---------- */
+/* В исходном style.css у .menu_active одновременно заданы left:210px и width:100%,
+   из-за чего панель меню съезжала за пределы страницы. Прижимаем к левому краю. */
+.menu_active {
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 1440px;
+    background: #E5E5E5 !important;
+    overflow-y: auto;
+}
+
+/* ---------- Ссылки внутри бургер-меню ---------- */
+.menu__text-one a,
+.menu__text-second a,
+.menu__text-thrid a,
+.menu__text-fourth a,
+.menu__text-fifth a,
+.menu__text-sixth a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+.menu__text-one a:hover,
+.menu__text-second a:hover,
+.menu__text-thrid a:hover,
+.menu__text-fourth a:hover,
+.menu__text-fifth a:hover,
+.menu__text-sixth a:hover {
+    color: #590D56;
+    text-decoration: underline;
+}
+
+/* ---------- Ссылки-триггеры модалок и якорей ---------- */
+[data-modal] {
+    cursor: pointer;
+}
+
+/* ---------- Модальные окна ---------- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 6, 19, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease, visibility .25s ease;
+    z-index: 999;
+    padding: 20px;
+}
+.modal-overlay--active {
+    opacity: 1;
+    visibility: visible;
+}
+body.no-scroll {
+    overflow: hidden;
+}
+.modal-box {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 40px;
+    transform: translateY(20px);
+    transition: transform .25s ease;
+    font-family: 'Roboto', sans-serif;
+}
+.modal-overlay--active .modal-box {
+    transform: translateY(0);
+}
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    border: none;
+    background: transparent;
+    font-size: 28px;
+    line-height: 1;
+    color: #590D56;
+    cursor: pointer;
+}
+.modal-title {
+    font-family: 'Merriweather', serif;
+    color: #47093E;
+    margin: 0 0 16px;
+    font-size: 24px;
+}
+.modal-lead {
+    color: #333;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+.modal-table th,
+.modal-table td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+}
+.modal-table th {
+    color: #47093E;
+    font-weight: 700;
+}
+.modal-list {
+    margin: 0 0 16px;
+    padding-left: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+.modal-note {
+    font-size: 13px;
+    color: #888;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+    line-height: 1.5;
+}
+.modal-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #47093E;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid #47093E;
+}
+.modal-map {
+    width: 100%;
+    height: 360px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.modal-map iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ---------- Универсальные новые информационные секции ---------- */
+.extra-section {
+    position: relative;
+    background: #E5E5E5;
+    padding: 90px 0;
+}
+.extra-section--dark {
+    background: linear-gradient(135deg, #590D56 0%, #2f0a2b 100%);
+    color: #fff;
+}
+.extra-section__inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 150px;
+}
+.extra-section__title {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #47093E;
+    margin: 0 0 24px;
+}
+.extra-section--dark .extra-section__title {
+    color: #fff;
+}
+.extra-section__text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #444;
+    max-width: 780px;
+}
+.extra-section--dark .extra-section__text {
+    color: rgba(255,255,255,.9);
+}
+.extra-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 32px;
+}
+.extra-section__card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 26px 28px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.06);
+}
+.extra-section--dark .extra-section__card {
+    background: rgba(255,255,255,.08);
+}
+.extra-section__card h4 {
+    font-family: 'Merriweather', serif;
+    color: #47093E;
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+.extra-section--dark .extra-section__card h4 {
+    color: #fff;
+}
+.extra-section__card ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #555;
+    line-height: 1.7;
+}
+.extra-section--dark .extra-section__card ul {
+    color: rgba(255,255,255,.85);
+}
+.extra-section__disclaimer {
+    margin-top: 28px;
+    font-size: 13px;
+    color: #888;
+    max-width: 780px;
+    line-height: 1.5;
+}
+.extra-section--dark .extra-section__disclaimer {
+    color: rgba(255,255,255,.6);
+}
+
+/* Таблица формулы для «Специалистам» */
+.formula-table {
+    width: 100%;
+    max-width: 560px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+    overflow: hidden;
+}
+.formula-table th,
+.formula-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    color: #fff;
+}
+.formula-table th {
+    background: rgba(255,255,255,.1);
+}
+
+.contacts-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    color: rgba(255,255,255,.9);
+    line-height: 2;
+}
+.contacts-list b {
+    color: #fff;
+    display: inline-block;
+    min-width: 130px;
+}
+
+/* ---------- Видео-блоки (мнение специалистов / о производстве) ---------- */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 36px;
+}
+.video-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    aspect-ratio: 16 / 9;
+}
+.video-card iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.thrid-section__navi-wrapper {
+    position: relative;
+}
+
+/* Делаем окно "О производстве" кликабельным видео вместо картинки-карусели */
+.production-video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+}
+.production-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+/* ---------- Карточки "Полезная информация" — подъём при наведении ---------- */
+.info-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    text-decoration: none;
+    transition: transform .25s ease, filter .25s ease;
+    cursor: pointer;
+}
+.info-card--hover,
+.info-card:hover {
+    transform: translateY(-10px);
+}
+
+/* ---------- Кнопки аптек: ховер с белым текстом и фиолетовым овалом ---------- */
+.fourth-section__buttons,
+.fourth-section__buttons-second,
+.fourth-section__buttons-thrid {
+    cursor: pointer;
+    transition: background-color .25s ease, border-color .25s ease, transform .2s ease;
+}
+.fourth-section__buttons:hover,
+.fourth-section__buttons-second:hover,
+.fourth-section__buttons-thrid:hover {
+    background-color: #47093E !important;
+    border-color: #47093E !important;
+    transform: translateY(-3px);
+}
+.fourth-section__buttons:hover .fourth-section__buttons-text-one,
+.fourth-section__buttons-second:hover .fourth-section__buttons-text-second,
+.fourth-section__buttons-thrid:hover .fourth-section__buttons-text-thrid {
+    color: #fff !important;
+}
+.fourth-section__buttons-text-one,
+.fourth-section__buttons-text-second,
+.fourth-section__buttons-text-thrid {
+    transition: color .25s ease;
+    pointer-events: none;
+}
+
+/* ---------- Адаптив: планшет / телефон ---------- */
+@media (max-width: 768px) {
+    .extra-section {
+        padding: 50px 0;
+    }
+    .extra-section__inner {
+        padding: 0 24px;
+    }
+    .extra-section__title {
+        font-size: 24px;
+    }
+    .extra-section__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal-box {
+        padding: 24px;
+    }
+}
