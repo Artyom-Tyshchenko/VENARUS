@@ -402,16 +402,23 @@ body.no-scroll {
 }
 
 /* Делаем окно "О производстве" кликабельным видео вместо картинки-карусели */
+.thrid-section__nav {
+    width: 480px;
+}
 .production-video {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 480px;
     max-width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
     border-radius: 8px;
     overflow: hidden;
     background: #000;
 }
 .production-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     border: 0;
